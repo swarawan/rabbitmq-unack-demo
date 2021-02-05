@@ -10,7 +10,6 @@ class QueueProperty {
     companion object {
         const val PROFILE_QUEUE = "app.profile"
         const val PROFILE_DLX_QUEUE = "app.profile.dlx"
-        const val EXCHANGE_DEFAULT_DIRECT = "app.direct"
 
         const val ARGS_DEAD_LETTER_EXCHANGE = "x-dead-letter-exchange"
         const val ARGS_DEAD_LETTER_ROUTING = "x-dead-letter-routing-key"
