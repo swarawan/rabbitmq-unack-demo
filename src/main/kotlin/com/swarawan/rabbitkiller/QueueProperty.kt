@@ -17,9 +17,6 @@ class QueueProperty {
     }
 
     @Bean
-    fun defaultDirectExchange(): DirectExchange = createExchange(EXCHANGE_DEFAULT_DIRECT)
-
-    @Bean
     fun profileQueue(): Queue = createQueue(
         name = PROFILE_QUEUE,
         arguments = mapOf(
@@ -30,12 +27,6 @@ class QueueProperty {
 
     @Bean
     fun profileQueueDlx(): Queue = createQueue(PROFILE_DLX_QUEUE)
-
-    @Bean
-    fun profileBinding(): Binding = BindingBuilder
-        .bind(profileQueue())
-        .to(defaultDirectExchange())
-        .with(PROFILE_QUEUE)
 
     private fun createQueue(
         name: String,
@@ -48,12 +39,4 @@ class QueueProperty {
             addArgument(key, value)
         }
     }
-
-    private fun createExchange(
-        name: String,
-        durable: Boolean = true,
-        autoDelete: Boolean = false
-    ) = DirectExchange(
-        name, durable, autoDelete
-    )
 }
